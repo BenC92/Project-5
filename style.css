@@ -1,0 +1,16 @@
+body{
+    margin: 0px;
+    background-color: blanchedalmond;
+}
+
+header{
+    text-align: center;
+    padding: 10px;
+}
+
+.topnav{
+    text-align: right;
+    padding: 10px;
+    border: blanchedalmond;
+    border-end-end-radius: 5px;
+}
