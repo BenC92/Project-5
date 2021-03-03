@@ -1,3 +1,11 @@
+const cartExists = localStorage.getItem('cart')
+
+if(! cartExists) {
+  alert('cart does not exist!!!')
+const cart = []
+localStorage.setItem('cart', JSON.stringify(cart))
+}
+
 const searchPrams = new URLSearchParams(window.location.search)
 const productId = searchPrams.get('id') 
 
@@ -45,27 +53,35 @@ function createProductCard(product){
   button.setAttribute('class', 'button btn btn-primary ')
   button.textContent = 'add to Cart'
   button.addEventListener('click', function(){
-    localStorage.setItem('cart', JSON.stringify(['']))
-    console.log(product.name)
+    const cartString = localStorage.getItem('cart')
+	  const cart = JSON.parse(cartString)
+
+    console.log(cart)
+
+    cart.push ({
+      name: product.name,
+      price: product.price,
+      varnish: select.selectedOptions[0].value
+
+    })
+
+    localStorage.setItem('cart', JSON.stringify(cart))
   })
   
   select.setAttribute('class', 'form-select default-form-select')
   price.textContent = product.price
+
   for (let i = 0; i < product.varnish.length; i++){
     console.log(product.varnish[i], i)
 
     const option= document.createElement('option')
 
-    option.value = i
+    option.value = product.varnish[i]
     option.textContent =product.varnish[i]
 
     select.appendChild(option)
   }
-  
-  
-  
-  
-  
+   
   card.appendChild(row)
   row.appendChild(colImg)
   row.appendChild(col)
@@ -77,8 +93,5 @@ function createProductCard(product){
   cardBody.appendChild(button)
   cardBody.appendChild(select)
   
-  
-
-
   return card
 }

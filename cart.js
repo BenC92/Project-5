@@ -1,42 +1,64 @@
-fetch('http://localhost:3000/api/furniture')
-  .then(response => response.json())
-  .then(data => {
-    
-  console.log(data)
-    const productListElement = document.getElementById('product-list')
+const cartExists = localStorage.getItem('cart')
 
-    for (let index = 0; index < data.length; index++) {
-      const product = data[index];
-      const productCard =createProductCard(product)
-  
-      productListElement.appendChild(productCard)
-    }
-  })
-
-
+if(! cartExists) {
+  alert('cart does not exist!!!')
 const cart = []
-// add an empty cart (array)
-// You should probably not overwrite the cart if it exists, try building a getter to check if returns something
 localStorage.setItem('cart', JSON.stringify(cart))
+}
 
-const addToCard = document.getElementById('btn-add-to-cart')
+let cart = localStorage.getItem('cart')
+cart = JSON.parse(cart)
 
-addToCard.addEventListener('click', function () {
-	// get the cart from localStorage
-	const cartString = localStorage.getItem('cart')
-	// convert the cart string into javascript using JSON.parse
-	const cart = JSON.parse(cartString)
-	
-  cart.push({
-    _id: 'product2',
-    name: 'Oak table',
-    price: 89900,
-    varnish: 'option 2'
-  })
-	
-  console.log(cart)
-	// add the updated cart to the list
-	localStorage.setItem('cart', JSON.stringify(cart))
-})
+const cartElement = document.getElementById('cart')
 
-console.log(price.toLocaleString('en-IN', { maximumSignificantDigits: 3 }))
+const table = document.createElement('table')
+ const thead = document.createElement('thead')
+ const trHead = document.createElement('tr')
+ const thName = document.createElement('th')
+ thName.textContent = 'Name'
+ const thPrice = document.createElement('th')
+ thPrice.textContent = 'Price'
+ const thVarnish = document.createElement('th')
+ thVarnish.textContent = 'Varnish'
+ const tbody = document.createElement('tbody')
+
+
+ table.setAttribute('class', 'table border')
+ trHead.setAttribute('class', 'col')
+ thName.setAttribute('scope' , 'col')
+ thPrice.setAttribute('scope', 'col')
+ thVarnish.setAttribute('scope', 'col')
+
+
+ cartElement.appendChild(table)
+ table.appendChild(thead)
+ thead.appendChild(trHead)
+ trHead.appendChild(thName)
+ trHead.appendChild(thPrice)
+ trHead.appendChild(thVarnish)
+ table.appendChild(tbody)
+
+
+
+for (let index = 0; index < cart.length; index++) {
+  const product = cart[index];
+
+ 
+ const trFirstRow = document.createElement('tr')
+ const tdFirstRowName = document.createElement('td')
+ tdFirstRowName.textContent = product.name
+ const tdFirstRowPrice = document.createElement('td')
+ tdFirstRowPrice.testContent = product.price
+ const tdFirstRowVarnish = document.createElement('td')
+ tdFirstRowVarnish.textContent = product.varnish
+
+
+ tbody.appendChild(trFirstRow)
+ trFirstRow.appendChild(tdFirstRowName)
+ trFirstRow.appendChild(tdFirstRowPrice)
+ trFirstRow.appendChild(tdFirstRowVarnish)
+ 
+ console.log(product.price.toLocaleString('de-DE'))
+  console.log(cart[index])
+  
+}

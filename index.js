@@ -1,3 +1,10 @@
+const cartExists = localStorage.getItem('cart')
+
+if(! cartExists) {
+  alert('cart does not exist!!!')
+const cart = []
+localStorage.setItem('cart', JSON.stringify(cart))
+}
 
 fetch('http://localhost:3000/api/furniture/' )
   .then(response => response.json())
@@ -40,7 +47,7 @@ function createProductCard(product){
   cardText.textContent = product.description
   button.setAttribute('class', 'button btn btn-primary a')
   button.setAttribute('href', '/product.html?id='+ product._id)
-  button.textContent = 'Add to Shopping Cart'
+  button.textContent = 'more details'
 
   card.appendChild(row)
   row.appendChild(colImg)
