@@ -21,13 +21,20 @@ const table = document.createElement('table')
  const thVarnish = document.createElement('th')
  thVarnish.textContent = 'Varnish'
  const tbody = document.createElement('tbody')
+const button = document.createElement('a')
+button.textContent = 'order now'
 
+
+ 
 
  table.setAttribute('class', 'table border')
  trHead.setAttribute('class', 'col')
  thName.setAttribute('scope' , 'col')
  thPrice.setAttribute('scope', 'col')
  thVarnish.setAttribute('scope', 'col')
+ button.setAttribute('class', 'button btn btn-primary a')
+ button.setAttribute('href', '/order-confirm.html')
+
 
 
  cartElement.appendChild(table)
@@ -37,6 +44,7 @@ const table = document.createElement('table')
  trHead.appendChild(thPrice)
  trHead.appendChild(thVarnish)
  table.appendChild(tbody)
+ table.appendChild(button)
 
 
 
@@ -48,9 +56,10 @@ for (let index = 0; index < cart.length; index++) {
  const tdFirstRowName = document.createElement('td')
  tdFirstRowName.textContent = product.name
  const tdFirstRowPrice = document.createElement('td')
- tdFirstRowPrice.testContent = product.price
+ tdFirstRowPrice.textContent = product.price.toLocaleString('de-DE', { style: 'currency', currency: 'EUR' })
  const tdFirstRowVarnish = document.createElement('td')
  tdFirstRowVarnish.textContent = product.varnish
+ 
 
 
  tbody.appendChild(trFirstRow)
