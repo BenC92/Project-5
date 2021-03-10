@@ -21,11 +21,9 @@ const table = document.createElement('table')
  const thVarnish = document.createElement('th')
  thVarnish.textContent = 'Varnish'
  const tbody = document.createElement('tbody')
- const footer = document.createElement('div')
- const totalPrice = document.createElement('h4')
- totalPrice.textContent =
+ const footer = document.createElement('div') 
  const button = document.createElement('a')
-button.textContent = 'order now'
+ button.textContent = 'order now'
 
 
 
@@ -51,7 +49,7 @@ button.textContent = 'order now'
  table.appendChild(tbody)
  cartElement.appendChild(footer)
  footer.appendChild(button)
- footer.appendChild(totalPrice)
+ 
 
 let total = 0
 
@@ -79,3 +77,8 @@ for (let index = 0; index < cart.length; index++) {
   
 }
 console.log(total)
+
+const totalPrice = document.createElement('h4')
+totalPrice.textContent = total.toLocaleString('de-DE', { style: 'currency', currency: 'EUR' })
+
+footer.appendChild(totalPrice)

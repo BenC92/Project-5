@@ -6,7 +6,6 @@ const cart = []
 localStorage.setItem('cart', JSON.stringify(cart))
 }
 
-
 const card = document.createElement('card')
 const cardBody = document.createElement('div')
 const head = document.createElement('h1')
@@ -30,19 +29,20 @@ cardBody.appendChild(h3)
 cardBody.appendChild(p)
 cardBody.appendChild(button)
 
-
 console.log(order)
-
 
 const order =  {
 	contact: {
-		name: 'john',
-		address: 'awd'
+		firstName: 'Luke',
+    lastName : 'Carrington',
+		address: '16 Berlin way ',
+    city: 'Berlin',
+    email:'lukeCar@gmail.com'
 	},
-	products ['productId1', 'productId2']
+	products : []
 }
 
-fetch('/order', {
+fetch('http://localhost:3000/api/furniture/order', {
   method: 'POST',
   headers: {'Content-Type': 'application/json'},
   body: JSON.stringify(order)
@@ -50,4 +50,7 @@ fetch('/order', {
 .then(response => response.json())
 .then(data => {
   console.log('Success:', data);
+})
+.catch(error =>{
+  console.error(error)
 })
