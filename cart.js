@@ -21,8 +21,12 @@ const table = document.createElement('table')
  const thVarnish = document.createElement('th')
  thVarnish.textContent = 'Varnish'
  const tbody = document.createElement('tbody')
-const button = document.createElement('a')
+ const footer = document.createElement('div')
+ const totalPrice = document.createElement('h4')
+ totalPrice.textContent =
+ const button = document.createElement('a')
 button.textContent = 'order now'
+
 
 
  
@@ -32,6 +36,7 @@ button.textContent = 'order now'
  thName.setAttribute('scope' , 'col')
  thPrice.setAttribute('scope', 'col')
  thVarnish.setAttribute('scope', 'col')
+ footer.setAttribute('class', 'd-flex justify-content-between')
  button.setAttribute('class', 'button btn btn-primary a')
  button.setAttribute('href', '/order-confirm.html')
 
@@ -44,14 +49,16 @@ button.textContent = 'order now'
  trHead.appendChild(thPrice)
  trHead.appendChild(thVarnish)
  table.appendChild(tbody)
- table.appendChild(button)
+ cartElement.appendChild(footer)
+ footer.appendChild(button)
+ footer.appendChild(totalPrice)
 
-
+let total = 0
 
 for (let index = 0; index < cart.length; index++) {
   const product = cart[index];
 
- 
+ total += product.price
  const trFirstRow = document.createElement('tr')
  const tdFirstRowName = document.createElement('td')
  tdFirstRowName.textContent = product.name
@@ -71,3 +78,4 @@ for (let index = 0; index < cart.length; index++) {
   console.log(cart[index])
   
 }
+console.log(total)

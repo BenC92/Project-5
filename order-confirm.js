@@ -6,7 +6,7 @@ const cart = []
 localStorage.setItem('cart', JSON.stringify(cart))
 }
 
-function createOrderConfirmedCard(order){
+
 const card = document.createElement('card')
 const cardBody = document.createElement('div')
 const head = document.createElement('h1')
@@ -33,4 +33,21 @@ cardBody.appendChild(button)
 
 console.log(order)
 
+
+const order =  {
+	contact: {
+		name: 'john',
+		address: 'awd'
+	},
+	products ['productId1', 'productId2']
 }
+
+fetch('/order', {
+  method: 'POST',
+  headers: {'Content-Type': 'application/json'},
+  body: JSON.stringify(order)
+})
+.then(response => response.json())
+.then(data => {
+  console.log('Success:', data);
+})
