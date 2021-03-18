@@ -61,7 +61,8 @@ function createProductCard(product){
     cart.push ({
       name: product.name,
       price: product.price,
-      varnish: select.selectedOptions[0].value
+      varnish: select.selectedOptions[0].value,
+      id: product._id
 
     })
 
