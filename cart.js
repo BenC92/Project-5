@@ -1,7 +1,6 @@
 const cartExists = localStorage.getItem('cart')
 
 if(! cartExists) {
-  alert('cart does not exist!!!')
 const cart = []
 localStorage.setItem('cart', JSON.stringify(cart))
 }

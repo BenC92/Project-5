@@ -1,7 +1,6 @@
 const cartExists = localStorage.getItem('cart')
 
 if(! cartExists) {
-  alert('cart does not exist!!!')
 const cart = []
 localStorage.setItem('cart', JSON.stringify(cart))
 }
@@ -39,8 +38,7 @@ function createProductCard(product){
   
 
   card.setAttribute('class','card')
-  row.setAttribute('class','row row-cols-1 row-cols-md-2 g-4')
-  colImg.setAttribute('class','col')
+  img.setAttribute('style','object-fit: cover; width: 100%;')
   img.src = product.imageUrl
   img.alt = product.name
   img.setAttribute('class', 'card-img-top')
@@ -83,11 +81,9 @@ function createProductCard(product){
     select.appendChild(option)
   }
    
-  card.appendChild(row)
-  row.appendChild(colImg)
-  row.appendChild(col)
-  colImg.appendChild(img)
-  col.appendChild(cardBody)
+  
+  card.appendChild(img)
+  card.appendChild(cardBody)
   cardBody.appendChild(cardTitle)
   cardBody.appendChild(cardText)
   cardBody.appendChild(price)

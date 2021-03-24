@@ -1,12 +1,11 @@
 const cartExists = localStorage.getItem('cart')
 
 if(! cartExists) {
-  alert('cart does not exist!!!')
 const cart = []
 localStorage.setItem('cart', JSON.stringify(cart))
 }
 
-fetch('http://localhost:3000/api/furniture/' )
+fetch('http://localhost:3000/api/furniture')
   .then(response => response.json())
   .then(data => {
     
@@ -20,6 +19,7 @@ fetch('http://localhost:3000/api/furniture/' )
       productListElement.appendChild(productCard)
     }
   })
+  .catch(e => console.error(e))
 
 function createProductCard(product){
   const card = document.createElement('div')

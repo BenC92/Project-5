@@ -1,7 +1,6 @@
 const cartExists = localStorage.getItem('cart')
 
 if(! cartExists) {
-  alert('cart does not exist!!!')
 const cart = []
 localStorage.setItem('cart', JSON.stringify(cart))
 }
@@ -25,60 +24,61 @@ const cityInput = document.createElement('input')
 const emailLabel = document.createElement('label')
 emailLabel.textContent = 'Email'
 const emailInput =document.createElement('input')
-const button = document.createElement('a')
+const button = document.createElement('button')
 button.textContent = 'Submit'
 
 fBody.setAttribute('class', 'mb-3')
 firstNameLabel.setAttribute('class', 'form-label')
+firstNameLabel.setAttribute('for','first-name')
 firstNameInput.setAttribute('type','text')
 firstNameInput.setAttribute('class', 'form-control')
+firstNameInput.setAttribute('required', '')
 firstNameInput.setAttribute('id','first-name')
 lastNameLabel.setAttribute('class', 'form-label')
+lastNameLabel.setAttribute('for','Last-name')
+lastNameInput.setAttribute('required', '')
 lastNameInput.setAttribute('type','text')
 lastNameInput.setAttribute('class', 'form-control')
 lastNameInput.setAttribute('id','Last name')
 addressLabel.setAttribute('class', 'form-label')
+addressLabel.setAttribute('for', 'address')
 addressInput.setAttribute('type', 'text')
+addressInput.setAttribute('required', '')
 addressInput.setAttribute('class', 'form-control')
 addressInput.setAttribute('id', 'Address')
+cityLabel.setAttribute('class', 'form-label')
+cityLabel.setAttribute('for', 'City')
+cityInput.setAttribute('type', 'text')
+cityInput.setAttribute('required', '')
+cityInput.setAttribute('class', 'form-control')
+cityInput.setAttribute('id', 'City')
 emailLabel.setAttribute('class', 'form-label')
-emailInput.setAttribute('type', 'text')
+emailLabel.setAttribute('for', 'Email')
+emailInput.setAttribute('type', 'email')
+emailInput.setAttribute('required', '')
 emailInput.setAttribute('class', ' form-control')
 emailInput.setAttribute('id', 'Email')
 button.setAttribute('class', 'btn btn-primary')
-button.addEventListener('click', function(){
+button.setAttribute('type', 'submit')
+var myModal = new bootstrap.Modal(document.getElementById('myModal'))
+form.addEventListener('submit', function(event){
+	event.preventDefault();
+	const cartString = localStorage.getItem('cart')
+	const cart = JSON.parse(cartString)
+	myModal.show()
+
   const order =  {
 	contact: {
 		firstName: firstNameInput.value,
-    lastName : lastNameInput.value,
+    	lastName : lastNameInput.value,
 		address: addressInput.value,
-    city: cityInput.value,
-    email: emailInput.value
+    	city: cityInput.value,
+    	email: emailInput.value
 	},
 	products : []
 }
-const cart = [
-	{
-		name: 'bed1',
-		price: 123,
-		varnish: 'b',
-		id: 'product1'
-	},
-	{
-		name: 'bed2',
-		price: 12333,
-		varnish: 'b',
-		id: 'product2'
-	}
-]
 
 
-const order = {
-	contact: {},
-	products: []
-}
-
-// add all the product id's to the order object
 for (let i = 0; i < cart.length; i++) {
 	const product = cart[i]
 	
@@ -87,17 +87,7 @@ for (let i = 0; i < cart.length; i++) {
 
 console.log(order)
 
-function getProductsFromLocalStorage() {
-  const cs = localStorage.getItem('cart');
-  if (cs === null) {
-    addProduct();
-  } else {
-    $.each(cs.products, function(key, value) {
-      cartList.prepend($('<li class="product"><div class="product-image"><a href="#0"><img src="'+ value.image +'" alt="placeholder"></a></div><div class="product-details"><h3><a href="#0">' + value.name + '</a></h3><span class="price">${value.price}</span><div class="actions"><a href="#0" class="delete-item">Delete</a><a class="delete-item">' + value.size + '</a><a class="delete-item">' + value.color + '</a><div class="quantity"><label for="cd-product-' + value.productId + '">Qty</label><span class="select"><select id="cd-product-' + value.productId + '" name="quantity"><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option></select></span></div></div></div></li>'));
-    });
-  }
-}
-order.product.push(productId)
+
 
 
 fetch('http://localhost:3000/api/furniture/order', {
@@ -123,6 +113,8 @@ fBody.appendChild(lastNameLabel)
 fBody.appendChild(lastNameInput)
 fBody.appendChild(addressLabel)
 fBody.appendChild(addressInput)
+fBody.appendChild(cityLabel)
+fBody.appendChild(cityInput)
 fBody.appendChild(emailLabel)
 fBody.appendChild(emailInput)
 fBody.appendChild(button)
