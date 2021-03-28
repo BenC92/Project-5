@@ -87,8 +87,8 @@ function createProductCard(product){
   cardBody.appendChild(cardTitle)
   cardBody.appendChild(cardText)
   cardBody.appendChild(price)
-  cardBody.appendChild(button)
   cardBody.appendChild(select)
-  
+  cardBody.appendChild(button)
+
   return card
 }

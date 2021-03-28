@@ -14,3 +14,7 @@ header{
     border: blanchedalmond;
     border-end-end-radius: 5px;
 }
+
+h1{
+    text-align: center;
+}
