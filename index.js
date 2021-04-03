@@ -46,7 +46,7 @@ function createProductCard(product){
   cardText.setAttribute('class', 'card-text')
   cardText.textContent = product.description
   button.setAttribute('class', 'button btn btn-primary a')
-  button.setAttribute('href', '/product.html?id='+ product._id)
+  button.setAttribute('href', 'product.html?id='+ product._id)
   button.textContent = 'more details'
 
   card.appendChild(row)

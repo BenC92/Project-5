@@ -65,6 +65,7 @@ form.addEventListener('submit', function(event){
 	event.preventDefault();
 	const cartString = localStorage.getItem('cart')
 	const cart = JSON.parse(cartString)
+	
 	myModal.show()
 
   const order =  {

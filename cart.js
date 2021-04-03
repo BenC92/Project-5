@@ -35,7 +35,7 @@ const table = document.createElement('table')
  thVarnish.setAttribute('scope', 'col')
  footer.setAttribute('class', 'd-flex justify-content-between')
  button.setAttribute('class', 'button btn btn-primary a')
- button.setAttribute('href', '/order-confirm.html')
+ button.setAttribute('href', 'order-confirm.html')
 
 
 

@@ -48,11 +48,14 @@ function createProductCard(product){
   cardTitle.textContent = product.name
   cardText.setAttribute('class', 'card-text')
   cardText.textContent = product.description
-  button.setAttribute('class', 'button btn btn-primary ')
+  button.setAttribute('class', 'button btn btn-primary')
   button.textContent = 'add to Cart'
+  var myModal = new bootstrap.Modal(document.getElementById('myModal'))
   button.addEventListener('click', function(){
     const cartString = localStorage.getItem('cart')
 	  const cart = JSON.parse(cartString)
+    
+    myModal.show()
 
     console.log(cart)
 
@@ -67,7 +70,7 @@ function createProductCard(product){
     localStorage.setItem('cart', JSON.stringify(cart))
   })
   
-  select.setAttribute('class', 'form-select default-form-select')
+  select.setAttribute('class', 'form-select default-form-select mb-3 w-50')
   price.textContent = product.price
 
   for (let i = 0; i < product.varnish.length; i++){
